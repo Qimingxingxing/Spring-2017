@@ -1,1 +1,1 @@
-python3 hw.py
+python3 nim.py
