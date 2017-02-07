@@ -1,7 +1,7 @@
 package edu.nyu.cs9053.homework2;
 
 import java.math.BigDecimal;
-
+import static java.lang.System.out;
 /**
  * User: blangel
  * Date: 8/17/14
@@ -20,7 +20,10 @@ public class CompoundInterestCalculator {
      * @see {@literal http://en.wikipedia.org/wiki/Compound_interest#Compound_Interest}
      */
     public BigDecimal compoundAnnually(double principal, double rate, int periods, int years) {
-	// TODO - implement
+        BigDecimal bigPrincipal = new BigDecimal(principal);
+        BigDecimal bigRate = new BigDecimal(rate);
+        BigDecimal base = BigDecimal.valueOf(1).add(bigRate.divide(BigDecimal.valueOf(periods)));
+        return (bigPrincipal.multiply(base.pow(periods*years))).subtract(bigPrincipal); 
     }
 
     /**
@@ -31,7 +34,18 @@ public class CompoundInterestCalculator {
      * @see {@literal http://en.wikipedia.org/wiki/Compound_interest#Continuous_compounding}
      */
     public BigDecimal continuousCompound(double principal, double rate, int years) {
-	// TODO - implement
+        BigDecimal bigPrincipal = new BigDecimal(principal);
+        BigDecimal bigRate = new BigDecimal(rate);
+        double e = Math.E;
+        double power = (rate * years);
+        return  bigPrincipal.multiply(BigDecimal.valueOf(Math.exp(power))).subtract(bigPrincipal);
+    }
+    //class test main 
+    public static void main(String[] args){
+         CompoundInterestCalculator a =  new CompoundInterestCalculator();
+         out.println(a.compoundAnnually(1500, 0.043, 4 ,6));
+
+         out.println(a.continuousCompound(2340, 0.031, 3));
     }
 
 }
