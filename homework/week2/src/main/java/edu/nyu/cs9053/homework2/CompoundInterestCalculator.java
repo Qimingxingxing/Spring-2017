@@ -20,10 +20,10 @@ public class CompoundInterestCalculator {
      * @see {@literal http://en.wikipedia.org/wiki/Compound_interest#Compound_Interest}
      */
     public BigDecimal compoundAnnually(double principal, double rate, int periods, int years) {
-        BigDecimal bigPrincipal = new BigDecimal(principal);
-        BigDecimal bigRate = new BigDecimal(rate);
-        BigDecimal base = BigDecimal.valueOf(1).add(bigRate.divide(BigDecimal.valueOf(periods)));
-        return (bigPrincipal.multiply(base.pow(periods*years))).subtract(bigPrincipal); 
+        // base = 1 + rate/periods 
+        BigDecimal base = BigDecimal.valueOf(1).add(BigDecimal.valueOf(rate).divide(BigDecimal.valueOf(periods)));
+        // return (principle * (base ^ (periods * years)) - principle)
+        return (BigDecimal.valueOf(principal).multiply(base.pow(periods*years))).subtract(BigDecimal.valueOf(principal)); 
     }
 
     /**
@@ -34,18 +34,18 @@ public class CompoundInterestCalculator {
      * @see {@literal http://en.wikipedia.org/wiki/Compound_interest#Continuous_compounding}
      */
     public BigDecimal continuousCompound(double principal, double rate, int years) {
-        BigDecimal bigPrincipal = new BigDecimal(principal);
-        BigDecimal bigRate = new BigDecimal(rate);
         double e = Math.E;
         double power = (rate * years);
-        return  bigPrincipal.multiply(BigDecimal.valueOf(Math.exp(power))).subtract(bigPrincipal);
+        // return   principal * (e ^ (rate * years)) - principal
+        return  BigDecimal.valueOf(principal).multiply(BigDecimal.valueOf(Math.exp(power))).subtract(BigDecimal.valueOf(principal));
     }
     //class test main 
     public static void main(String[] args){
-         CompoundInterestCalculator a =  new CompoundInterestCalculator();
-         out.println(a.compoundAnnually(1500, 0.043, 4 ,6));
+        
+         CompoundInterestCalculator compoundInterestCalculator=  new CompoundInterestCalculator();
+         out.println(compoundInterestCalculator.compoundAnnually(1500, 0.043, 4 ,6));
 
-         out.println(a.continuousCompound(2340, 0.031, 3));
+         out.println(compoundInterestCalculator.continuousCompound(2340, 0.031, 3));
     }
 
 }

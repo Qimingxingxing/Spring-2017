@@ -35,7 +35,7 @@ public class Program {
         			System.out.println("Invalid argument");        			
         		}
         	}
-            
+
         	else{
         		System.out.println("Invalid argument");
         	}

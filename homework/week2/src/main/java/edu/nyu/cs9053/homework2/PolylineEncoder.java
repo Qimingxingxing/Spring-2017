@@ -65,6 +65,10 @@ public class PolylineEncoder {
     			break;
     		}
     	}
+        // this covers the corner case when all the elements are 0
+        if(firstNotZeroPoint == 0){
+            firstNotZeroPoint = 31;
+        }
     	//now break it into 5-bit chunks, starting from right hand side
     	String[] fiveDigitChunks = new String[(31-firstNotZeroPoint)/5 +1 ];
         //take care of the scenerio when length is 7, which prevents from outofbound exception
