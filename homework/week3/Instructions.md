@@ -28,7 +28,7 @@
     - i.e., it does not need to be dynamic; supported ASCII letters may be hard coded
     
 ### Example Runs of Program
-    $ java -cp TODO edu.nyu.cs9053.homework3.AsciiArt 1
+    $ java -cp TODO edu.nyu.cs9053.homework3.oo.AsciiArt 1
     $         11         
     $          1          
     $          1
@@ -39,9 +39,9 @@
     $          1
     $          1
     $       1111111       
-    $ java -cp TODO edu.nyu.cs9053.homework3.AsciiArt q
+    $ java -cp TODO edu.nyu.cs9053.homework3.oo.AsciiArt q
     $ unknown character
-    $ java -cp TODO edu.nyu.cs9053.homework3.AsciiArt Q
+    $ java -cp TODO edu.nyu.cs9053.homework3.oo.AsciiArt Q
     $       .Q..Q..Q.         
     $     .Q.       .Q.         
     $   .Q.           .Q.
