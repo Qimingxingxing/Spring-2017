@@ -93,9 +93,9 @@ The process for viewing and submitting homework assignments is:
 * You will work on your assignment and commit locally
 * The final commit which I'll review for grading will be the latest commit __before 5pm__ the day of the following lecture (i.e., you'll have about one week to complete the assignment)
 * Only __after 5pm__ you should push your changes to your forked repository (`git push`) and then issue a [Pull Request](https://help.github.com/articles/using-pull-requests) for your completed work thus making it available for grading.
-* Note, the pull request __must be submitted within 2 hours__ of the due date.
+* Note, the pull request __must be submitted within 5 hours__ of the due date.
 
-__Late submissions are treated as 0__ Submitting an assignment late will not be tolerated in any circumstance. This includes committing after 5pm on the due date and issuing a pull request after the 2 hour deadline of last commit.  If this happens you can use this as your grade which will not be counted.  
+__Late submissions are treated as 0__ Submitting an assignment late will not be tolerated in any circumstance. This includes committing after 5pm on the due date and issuing a pull request after the 5 hour deadline of last commit.  If this happens you can use this as your grade which will not be counted.  
 
 __Early Pull Requests are treated as 0__ as well.  Submitting a pull request __before 5pm__ is not allowed (as other students can review your submission).  If this happens you can use this as your grade which will not be counted.
 
