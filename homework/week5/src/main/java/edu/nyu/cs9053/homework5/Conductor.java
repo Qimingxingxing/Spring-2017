@@ -68,7 +68,16 @@ public class Conductor {
                 new Note("C"), new Note("C"), Note.pause(), Note.pause(), new Note("C"), new Note("C"),
                 new Note("C"), new Note("C"), new Note("D"), new Note("B"), new Note("E"), new Note("A")
         };
+        // twickle twickle little star
+        Note[] ownDitty = new Note[] {
+                new Note("C"), new Note("C"), new Note("G"), new Note("G"), new Note("A"), new Note("A"),
+                new Note("G"), new Note("F"), new Note("F"), new Note("E"), new Note("E"), new Note("D"),
+                new Note("D"), new Note("C"), new Note("G"), new Note("G"), new Note("F"), new Note("F"),
+                new Note("E"), new Note("E"), new Note("D"), new Note("G"), new Note("G"), new Note("F"),
+                new Note("F"), new Note("E"), new Note("E"), new Note("D")
+        };        
         return new Note[][] {
+                ownDitty,
                 chopsticks,
         };
     }
