@@ -47,12 +47,12 @@ public class Mine {
         return 0;
     }
 
-    @Safe(password = 3379114659l)
+    @Safe(password = 889057003l)
     private boolean getTools() {
         return safetyDepositBox.canGetTools(this);
     }
 
-    @Safe(password = 3379114659l)
+    @Safe(password = 440759635l)
     private boolean cashIn(int gems) {
         return safetyDepositBox.canCashIn(this, gems);
     }
