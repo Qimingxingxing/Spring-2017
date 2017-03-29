@@ -18,7 +18,7 @@ public class Warehouse {
 
     // TODO - implement such that the warehouse can hold any Bin of Item type
 
-    private final Bin items;
+    private final Bin<? extends Item> items;
 
     public Warehouse(Bin<? extends Item> items) {
         this.items = items;
@@ -31,7 +31,7 @@ public class Warehouse {
     public Warehouse copy() {
         // TODO - make a new Bin copying the values from `items` into a new Bin using the 'copy' method below
         // TODO - change to return a copied bin
-        Bin newBin = null;
+        Bin<? extends Item> newBin = new Bin<>();
         copy(items, newBin);
         return new Warehouse(newBin);
     }
