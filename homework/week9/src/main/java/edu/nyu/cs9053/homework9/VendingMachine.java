@@ -16,6 +16,7 @@ public class VendingMachine {
     public VendingMachine(List<Seltzer> seltzers) {
         this.seltzers = seltzers;
         this.capacity = seltzers.size();
+
     }
 
     public boolean atCapacity() {
