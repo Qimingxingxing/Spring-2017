@@ -8,12 +8,14 @@ import java.util.concurrent.Semaphore;
  * Time: 2:18 PM
  */
 public class ProducerConsumerFactory {
+	private static final Semaphore semp = new Semaphore(1);
+
     public static Producer createProducer() {
-		return new SeltzerProducer();
+		return new SeltzerProducer(semp);
     }
 
     public static Consumer createConsumer() {
-		return new SeltzerConsumer();
+		return new SeltzerConsumer(semp);
     }
 
 }

@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class SeltzerProducer implements Producer{
 	private final Semaphore semp;
-	public SeltzerProducer(){
-		semp = new Semaphore(1);
+	public SeltzerProducer(Semaphore semp){
+		this.semp = semp;
 	}
 	@Override public Seltzer produce(VendingMachine into){
     	try{

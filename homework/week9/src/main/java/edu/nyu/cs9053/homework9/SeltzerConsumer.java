@@ -3,8 +3,8 @@ import java.util.concurrent.Semaphore;
 
 public class SeltzerConsumer implements Consumer{
 	private final Semaphore semp;
-	public SeltzerConsumer(){
-		semp = new Semaphore(1);
+	public SeltzerConsumer(Semaphore semp){
+		this.semp = semp;
 	}
     @Override public Seltzer consume(VendingMachine from){
     	try{
