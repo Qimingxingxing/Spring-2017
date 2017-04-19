@@ -32,7 +32,6 @@ public class MiddleAgesFortification extends AbstractFortification implements Fo
                     }
                 }
             });
-            threads[i].start();
         }
     }
     @Override
@@ -44,6 +43,9 @@ public class MiddleAgesFortification extends AbstractFortification implements Fo
                     handler.soldiersReady();
                 }
             });
+            for(Thread thread: threads){
+                thread.start();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
