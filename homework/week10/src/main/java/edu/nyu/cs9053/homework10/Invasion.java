@@ -82,7 +82,7 @@ public class Invasion {
                     fortification.surrender();
                     executor.shutdownNow();
                 }
-                int currentlyRunning = running.get();
+                int currentlyRunning = running.get();   
                 boolean tooMany = (currentlyRunning > concurrencyFactor);
                 if (tooMany || ((System.currentTimeMillis() > (start + concurrencyFactor))
                         && (currentlyRunning < Math.max(1, concurrencyFactor / 2)))) {
