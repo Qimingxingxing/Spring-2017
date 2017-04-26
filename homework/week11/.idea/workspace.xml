@@ -26,11 +26,12 @@
       <file leaf-file-name="GameClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="46" column="85" lean-forward="true" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="85" />
+            <state relative-caret-position="173">
+              <caret line="48" column="85" lean-forward="true" selection-start-line="48" selection-start-column="85" selection-end-line="48" selection-end-column="85" />
               <folding>
-                <element signature="e#2431#2432#0" expanded="true" />
-                <element signature="e#2464#2465#0" expanded="true" />
+                <element signature="e#2654#2655#0" expanded="true" />
+                <element signature="e#2687#2688#0" expanded="true" />
+                <marker date="1493226449000" expanded="true" signature="2304:2600" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -49,8 +50,8 @@
       <file leaf-file-name="GameServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="527">
+              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -568,8 +569,9 @@
         <state relative-caret-position="972">
           <caret line="62" column="19" lean-forward="false" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
           <folding>
-            <element signature="e#2431#2432#0" expanded="true" />
-            <element signature="e#2464#2465#0" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2687#2688#0" expanded="true" />
+            <marker date="1493226449000" expanded="true" signature="2304:2600" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -638,11 +640,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="46" column="85" lean-forward="true" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="85" />
+        <state relative-caret-position="173">
+          <caret line="48" column="85" lean-forward="true" selection-start-line="48" selection-start-column="85" selection-end-line="48" selection-end-column="85" />
           <folding>
-            <element signature="e#2431#2432#0" expanded="true" />
-            <element signature="e#2464#2465#0" expanded="true" />
+            <element signature="e#2654#2655#0" expanded="true" />
+            <element signature="e#2687#2688#0" expanded="true" />
+            <marker date="1493226449000" expanded="true" signature="2304:2600" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -657,8 +660,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="527">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

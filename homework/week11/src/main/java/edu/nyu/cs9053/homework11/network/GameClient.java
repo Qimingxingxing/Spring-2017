@@ -26,7 +26,8 @@ public class GameClient implements GameProvider {
     public static GameClient construct(Difficulty difficulty) {
         try {
             Socket socket = new Socket(GameServer.SERVER_HOST, GameServer.SERVER_PORT);
-            return new GameClient(socket.getInputStream(), socket.getOutputStream(), difficulty);
+            GameClient gameClient = new GameClient(socket.getInputStream(), socket.getOutputStream(), difficulty);
+            return gameClient;
         } catch (IOException ioe) {
             System.out.println("construct client failed!");
             throw new RuntimeException(ioe);
@@ -44,10 +45,11 @@ public class GameClient implements GameProvider {
         int numberOfNextFoes = 0;
         try {
             clientOutput.write(getDifficulty().name().getBytes(CHARSET));
+            // read the output value from the client channel which is seperated by %n
             BufferedReader inputReader = new BufferedReader(new InputStreamReader(clientInput));
             numberOfNextFoes = Integer.parseInt(inputReader.readLine());
         } catch (IOException ioe) {
-            System.out.println("Get num of next foes failed!");
+            System.out.println("Get number of next foes failed!");
         }
         return numberOfNextFoes;
 
@@ -57,6 +59,7 @@ public class GameClient implements GameProvider {
         InputMove nextMove = null;
         try {
             clientOutput.write("Move".getBytes(CHARSET));
+            // read the output value from the client channel which is seperated by %n
             BufferedReader inputReader = new BufferedReader(new InputStreamReader(clientInput));
             nextMove = InputMove.valueOf(inputReader.readLine());
         } catch (IOException ioe) {

@@ -33,12 +33,12 @@ public class GameServer implements NetworkGameProvider, Runnable {
 
     public static final String SERVER_HOST = "localhost";
     public static final int SERVER_PORT = 8080;
-    private final ByteBuffer buffer;
+    private final ByteBuffer inputBuffer;
     private final int BUFFERSIZE = 1024;
     private final Charset CHARSET = Charset.forName("UTF-8");
     private final Selector selector;
     private final ServerSocketChannel serverSocketChannel;
-    // map the client socketchannel with the write buffer
+    // map the client socketchannel with the write inputBuffer
     private final Map<SocketChannel, ByteBuffer> map;
     private final Random RANDOM;
 
@@ -50,7 +50,7 @@ public class GameServer implements NetworkGameProvider, Runnable {
     public GameServer() throws IOException {
     	RANDOM = new Random();
         map = new HashMap<>();
-        buffer = ByteBuffer.allocate(BUFFERSIZE);
+        inputBuffer = ByteBuffer.allocate(BUFFERSIZE);
         selector = Selector.open();
         serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.bind(new java.net.InetSocketAddress(SERVER_HOST, SERVER_PORT));
@@ -81,11 +81,11 @@ public class GameServer implements NetworkGameProvider, Runnable {
                         }
                         else if (key.isReadable()) {
                             // when any channel is ready for read
+                            inputBuffer.clear();
                             SocketChannel clientChannel = (SocketChannel) key.channel();
-                            buffer.clear();
                             try {
-                                clientChannel.read(buffer);
-                                String data = new String(buffer.array(), CHARSET);
+                                clientChannel.read(inputBuffer);
+                                String data = new String(inputBuffer.array(), CHARSET);
                                 ByteBuffer writeBuffer = map.get(clientChannel);
                                 if (!data.substring(0, 4).equals("Move")) {
                                     // if a call using String "Easy" would be a call to getRandomNextMove
@@ -103,13 +103,14 @@ public class GameServer implements NetworkGameProvider, Runnable {
                             }
                         }
                         else if (key.isWritable()) {
-                        	// when the key is writeable, it will write the content in buffer to client socket channel
+                        	// when the key is writeable, it will write the content in inputBuffer to client socket channel
                             SocketChannel clientChannel = (SocketChannel) key.channel();
                             ByteBuffer writeBuffer = map.get(clientChannel);
                             // if the writeBuffer is empty or null
                             if (writeBuffer == null || writeBuffer.position() == 0) {
                                 continue;
                             }
+                            // set the position to 0, start write to the channel
                             writeBuffer.flip();
                             clientChannel.write(writeBuffer);
                             writeBuffer.clear();
