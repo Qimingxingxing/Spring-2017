@@ -77,31 +77,29 @@ public class GameServer implements NetworkGameProvider, Runnable {
                             // accept the channel which is ready for new connection
                             SocketChannel clientChannel = serverSocketChannel.accept();
                             clientChannel.configureBlocking(false);
-                            clientChannel.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+                            clientChannel.register(selector, SelectionKey.OP_READ);
                             map.put(clientChannel, ByteBuffer.allocate(BUFFERSIZE));
                         }
                         else if (key.isReadable()) {
                             // when any channel is ready for read
                             inputBuffer.clear();
                             SocketChannel clientChannel = (SocketChannel) key.channel();
-                            try {
-                                clientChannel.read(inputBuffer);
-                                String data = new String(inputBuffer.array(), CHARSET);
-                                ByteBuffer writeBuffer = map.get(clientChannel);
-                                if (!data.substring(0, 4).equals("Move")) {
-                                    // if a call using String "Easy" would be a call to getRandomNextMove
-                                    writeBuffer.put(ByteBuffer.wrap(getRandomNumberOfNextFoes(data).getBytes(CHARSET)));
-                                    writeBuffer.put((byte) '\n');
+                            clientChannel.read(inputBuffer);
+                            String data = new String(inputBuffer.array(), CHARSET);
+                            ByteBuffer writeBuffer = map.get(clientChannel);
+                            if (!data.substring(0, 4).equals("Move")) {
+                                // if a call using String "Easy" would be a call to getRandomNextMove
+                                writeBuffer.put(ByteBuffer.wrap(getRandomNumberOfNextFoes(data).getBytes(CHARSET)));
+                                writeBuffer.put((byte) '\n');
 
-                                } else {
-                                    // if a call using String "move" would be a call to getRandomNextMove
-                                    writeBuffer.put(ByteBuffer.wrap(getRandomNextMove().getBytes(CHARSET)));
-                                    writeBuffer.put((byte) '\n');
-                                }
-                            }catch (Exception e) {
-                                map.remove(clientChannel);
-                                key.cancel();
+                            } else {
+                                // if a call using String "move" would be a call to getRandomNextMove
+                                writeBuffer.put(ByteBuffer.wrap(getRandomNextMove().getBytes(CHARSET)));
+                                writeBuffer.put((byte) '\n');
                             }
+                            clientChannel.configureBlocking(false);
+                            clientChannel.register(selector, SelectionKey.OP_WRITE);
+
                         }
                         else if (key.isWritable()) {
                         	// when the key is writeable, it will write the content in inputBuffer to client socket channel
@@ -114,7 +112,6 @@ public class GameServer implements NetworkGameProvider, Runnable {
                         }
                     }
                     finally {
-                    	// go to the next key
                         keyIterator.remove();
                     }
                 }
