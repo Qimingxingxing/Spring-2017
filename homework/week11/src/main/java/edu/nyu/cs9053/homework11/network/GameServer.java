@@ -52,9 +52,10 @@ public class GameServer implements NetworkGameProvider, Runnable {
         map = new HashMap<>();
         inputBuffer = ByteBuffer.allocate(BUFFERSIZE);
         selector = Selector.open();
+
         serverSocketChannel = ServerSocketChannel.open();
-        serverSocketChannel.bind(new java.net.InetSocketAddress(SERVER_HOST, SERVER_PORT));
         serverSocketChannel.configureBlocking(false);
+        serverSocketChannel.bind(new java.net.InetSocketAddress(SERVER_HOST, SERVER_PORT));
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
     }
 
@@ -106,10 +107,6 @@ public class GameServer implements NetworkGameProvider, Runnable {
                         	// when the key is writeable, it will write the content in inputBuffer to client socket channel
                             SocketChannel clientChannel = (SocketChannel) key.channel();
                             ByteBuffer writeBuffer = map.get(clientChannel);
-                            // if the writeBuffer is empty or null
-                            if (writeBuffer == null || writeBuffer.position() == 0) {
-                                continue;
-                            }
                             // set the position to 0, start write to the channel
                             writeBuffer.flip();
                             clientChannel.write(writeBuffer);
@@ -153,7 +150,7 @@ public class GameServer implements NetworkGameProvider, Runnable {
         if (move >= 20 && move < 40) {
             return "Down";
         }
-        if (move == 40 || move == 41) {
+        if (move > 41) {
             return "Right";
         }
         else {
