@@ -89,13 +89,11 @@ public class GameServer implements NetworkGameProvider, Runnable {
                             ByteBuffer writeBuffer = map.get(clientChannel);
                             if (!data.substring(0, 4).equals("Move")) {
                                 // if a call using String "Easy" would be a call to getRandomNextMove
-                                writeBuffer.put(ByteBuffer.wrap(getRandomNumberOfNextFoes(data).getBytes(CHARSET)));
-                                writeBuffer.put((byte) '\n');
+                                writeBuffer.put(ByteBuffer.wrap((getRandomNumberOfNextFoes(data)+'\n').getBytes(CHARSET)));
 
                             } else {
                                 // if a call using String "move" would be a call to getRandomNextMove
-                                writeBuffer.put(ByteBuffer.wrap(getRandomNextMove().getBytes(CHARSET)));
-                                writeBuffer.put((byte) '\n');
+                                writeBuffer.put(ByteBuffer.wrap((getRandomNextMove()+ "\n").getBytes(CHARSET)));
                             }
                             clientChannel.configureBlocking(false);
                             clientChannel.register(selector, SelectionKey.OP_WRITE);

@@ -26,8 +26,8 @@
       <file leaf-file-name="GameClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="48" column="85" lean-forward="false" selection-start-line="48" selection-start-column="85" selection-end-line="48" selection-end-column="85" />
+            <state relative-caret-position="680">
+              <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
               <folding>
                 <marker date="1493226449000" expanded="true" signature="2304:2600" ph="{...}" />
               </folding>
@@ -48,8 +48,8 @@
       <file leaf-file-name="GameServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="114" column="45" lean-forward="false" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+            <state relative-caret-position="292">
+              <caret line="95" column="90" lean-forward="false" selection-start-line="95" selection-start-column="90" selection-end-line="95" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -706,8 +706,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="48" column="85" lean-forward="false" selection-start-line="48" selection-start-column="85" selection-end-line="48" selection-end-column="85" />
+        <state relative-caret-position="680">
+          <caret line="71" column="35" lean-forward="true" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding>
             <marker date="1493226449000" expanded="true" signature="2304:2600" ph="{...}" />
           </folding>
@@ -716,8 +716,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/nyu/cs9053/homework11/network/GameServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="940">
-          <caret line="114" column="45" lean-forward="false" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+        <state relative-caret-position="292">
+          <caret line="95" column="90" lean-forward="false" selection-start-line="95" selection-start-column="90" selection-end-line="95" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
