@@ -44,17 +44,20 @@ public class VehicleMakeFilterer {
      * Note, this should use Java 8 streams API
      */
     public static Optional<List<VehicleMake>> loadMatchingJava8(Region region, String nameStartsWith, VehicleLoader loader) {
-        if ((nameStartsWith == null) || (region == null) || (loader == null)) {
+        Optional<Region> regionOptional = Optional.ofNullable(region);
+        Optional<String> nameStartsWithOptional = Optional.ofNullable(nameStartsWith);
+        Optional<VehicleLoader> loaderOptional = Optional.ofNullable(loader);
+        if (regionOptional.isPresent() && nameStartsWithOptional.isPresent() && loaderOptional.isPresent()){
+            List<VehicleMake> regionMakes = loader.getVehicleMakesByRegion(region.name());
+            List<VehicleMake> matches = new ArrayList<>(regionMakes.size());
+
+            regionMakes.stream()
+                    .filter(make -> (make.getName() != null) && make.getName().startsWith(nameStartsWith))
+                    .forEach(make -> matches.add(make));
+            return Optional.ofNullable(matches);
+        }
+        else{
             throw new IllegalArgumentException("The VehicleLoader and both region and nameStartsWith are required when loading VehicleMake matches");
         }
-        List<VehicleMake> regionMakes = loader.getVehicleMakesByRegion(region.name());
-        if (regionMakes == null) {
-            return null;
-        }
-        List<VehicleMake> matches = new ArrayList<>(regionMakes.size());
-        regionMakes.stream()
-                .filter(make -> (make.getName() != null) && make.getName().startsWith(nameStartsWith))
-                .forEach(make -> matches.add(make));
-        return Optional.ofNullable(matches);
     }
 }
