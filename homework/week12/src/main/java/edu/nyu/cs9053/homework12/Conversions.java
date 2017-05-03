@@ -9,6 +9,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * User: blangel
@@ -44,7 +45,9 @@ public class Conversions {
      * This should <b>not</b> be parallel
      */
     public static List<String> removeEmptyValuesJava8(List<String> values) {
-	// TODO - remove this comment once completed
+        return values != null ? values.stream()
+                .filter(s -> s != null || !s.trim().isEmpty())
+                .collect(Collectors.toList()): null;
     }
 
     /**
@@ -90,7 +93,32 @@ public class Conversions {
      * This should <b>be</b> parallel
      */
     public static NavigableSet<String> getUniqueAndNavigableLowerCaseMakeNamesJava8(VehicleLoader vehicleLoader) {
-	// TODO - remove this comment once completed
+        Region[] regions = Region.values();
+        final CountDownLatch latch = new CountDownLatch(regions.length);
+        final Set<VehicleMake> uniqueVehicleMakes = new HashSet<>();
+        Stream.of(regions).forEach(region -> {
+            EXECUTOR.submit(() -> {
+                List<VehicleMake> regionMakes = vehicleLoader.getVehicleMakesByRegion(region.name());
+                if (regionMakes != null) {
+                    uniqueVehicleMakes.addAll(regionMakes);
+                }
+                latch.countDown();
+            });
+        }
+        );
+
+        try {
+            latch.await();
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(ie);
+        }
+
+        NavigableSet<String> navigableMakeNames = new ConcurrentSkipListSet<>();
+        uniqueVehicleMakes.stream().filter(make -> make.getName() != null).forEach(make ->
+                navigableMakeNames.add(make.getName().toLowerCase())
+        );
+        return navigableMakeNames;
     }
 
 }

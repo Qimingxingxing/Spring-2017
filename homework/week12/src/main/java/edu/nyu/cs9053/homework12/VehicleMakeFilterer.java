@@ -43,8 +43,18 @@ public class VehicleMakeFilterer {
      * Java 8 equivalent of {@link #loadMatching(Region, String, VehicleLoader)}
      * Note, this should use Java 8 streams API
      */
-    public static /* TODO - add return type; remove this comment once completed */ loadMatchingJava8(Region region, String nameStartsWith, VehicleLoader loader) {
-	// TODO - remove this comment once completed
+    public static Optional<List<VehicleMake>> loadMatchingJava8(Region region, String nameStartsWith, VehicleLoader loader) {
+        if ((nameStartsWith == null) || (region == null) || (loader == null)) {
+            throw new IllegalArgumentException("The VehicleLoader and both region and nameStartsWith are required when loading VehicleMake matches");
+        }
+        List<VehicleMake> regionMakes = loader.getVehicleMakesByRegion(region.name());
+        if (regionMakes == null) {
+            return null;
+        }
+        List<VehicleMake> matches = new ArrayList<>(regionMakes.size());
+        regionMakes.stream()
+                .filter(make -> (make.getName() != null) && make.getName().startsWith(nameStartsWith))
+                .forEach(make -> matches.add(make));
+        return Optional.ofNullable(matches);
     }
-
 }
