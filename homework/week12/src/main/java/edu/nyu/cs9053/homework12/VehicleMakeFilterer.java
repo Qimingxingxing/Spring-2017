@@ -49,6 +49,9 @@ public class VehicleMakeFilterer {
         Optional<VehicleLoader> loaderOptional = Optional.ofNullable(loader);
         if (regionOptional.isPresent() && nameStartsWithOptional.isPresent() && loaderOptional.isPresent()){
             List<VehicleMake> regionMakes = loader.getVehicleMakesByRegion(region.name());
+            if (regionMakes == null) {
+                return null;
+            }
             List<VehicleMake> matches = new ArrayList<>(regionMakes.size());
 
             regionMakes.stream()
